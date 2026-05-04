@@ -186,16 +186,18 @@ std::vector<double> TabalaevAMatrixMulStrassenSEQ::StrassenMultiply(const std::v
     StrassenFrame current = std::move(frames.top());
     frames.pop();
 
-    if (current.stage == 0) {
-      if (current.n <= 1024) {
-        results.push(BaseMultiply(current.mat_a, current.mat_b, current.n));
-      } else {
-        PushStrassenSubtasks(frames, current.mat_a, current.mat_b, current.n);
-      }
-    } else {
+    if (current.n <= 256) {
+      results.push(BaseMultiply(current.mat_a, current.mat_b, current.n));
+      continue;
+    }
+
+    if (current.stage == 1) {
       results.push(CombineStrassenResults(results, current.n));
+    } else {
+      PushStrassenSubtasks(frames, current.mat_a, current.mat_b, current.n);
     }
   }
-  return results.top();
+
+  return std::move(results.top());
 }
 }  // namespace tabalaev_a_matrix_mul_strassen
