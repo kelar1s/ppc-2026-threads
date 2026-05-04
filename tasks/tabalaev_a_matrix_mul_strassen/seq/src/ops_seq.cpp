@@ -187,7 +187,7 @@ std::vector<double> TabalaevAMatrixMulStrassenSEQ::StrassenMultiply(const std::v
     frames.pop();
 
     if (current.stage == 0) {
-      if (current.n <= 32) {
+      if (current.n <= 1024) {
         results.push(BaseMultiply(current.mat_a, current.mat_b, current.n));
       } else {
         PushStrassenSubtasks(frames, current.mat_a, current.mat_b, current.n);
