@@ -31,12 +31,18 @@ class TabalaevAMatrixMulStrassenSEQ : public BaseTask {
 
   static std::vector<double> StrassenMultiply(const std::vector<double> &mat_a, const std::vector<double> &mat_b,
                                               size_t n);
+
   static std::vector<double> Add(const std::vector<double> &mat_a, const std::vector<double> &mat_b);
+
   static std::vector<double> Subtract(const std::vector<double> &mat_a, const std::vector<double> &mat_b);
+
   static std::vector<double> BaseMultiply(const std::vector<double> &mat_a, const std::vector<double> &mat_b, size_t n);
-  static void PushStrassenSubtasks(std::stack<StrassenFrame> &frames, const std::vector<double> &mat_a,
-                                   const std::vector<double> &mat_b, size_t n);
-  static std::vector<double> CombineStrassenResults(std::stack<std::vector<double>> &results, size_t n);
+
+  static void SplitMatrix(const std::vector<double> &src, size_t n, std::vector<double> &c11, std::vector<double> &c12,
+                          std::vector<double> &c21, std::vector<double> &c22);
+
+  static std::vector<double> CombineMatrix(const std::vector<double> &c11, const std::vector<double> &c12,
+                                           const std::vector<double> &c21, const std::vector<double> &c22, size_t n);
 
   size_t a_rows_ = 0;
   size_t a_cols_b_rows_ = 0;

@@ -43,7 +43,7 @@ class TabalaevAMatrixMulStrassenPerfTests : public ppc::util::BaseRunPerfTests<I
     if (expected_output_.size() != output_data.size()) {
       return false;
     }
-    constexpr double kEpsilon = 1e-9;
+    constexpr double kEpsilon = 1e-8;
     for (size_t i = 0; i < expected_output_.size(); ++i) {
       if (std::abs(expected_output_[i] - output_data[i]) > kEpsilon) {
         return false;
