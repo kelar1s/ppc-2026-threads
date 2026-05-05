@@ -99,8 +99,12 @@ std::vector<double> TabalaevAMatrixMulStrassenSEQ::BaseMultiply(const std::vecto
   std::vector<double> res(n * n, 0.0);
   for (size_t i = 0; i < n; ++i) {
     for (size_t k = 0; k < n; ++k) {
+      double temp = mat_a[(i * n) + k];
+      if (temp == 0.0) {
+        continue;
+      }
       for (size_t j = 0; j < n; ++j) {
-        res[(i * n) + j] += mat_a[(i * n) + k] * mat_b[(k * n) + j];
+        res[(i * n) + j] += temp * mat_b[(k * n) + j];
       }
     }
   }
