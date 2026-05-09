@@ -25,6 +25,9 @@ class TabalaevAMatrixMulStrassenALL : public BaseTask {
   bool RunImpl() override;
   bool PostProcessingImpl() override;
 
+  void RunMaster(int size);
+  void RunWorker();
+
   static std::vector<double> StrassenMultiply(const std::vector<double> &mat_a, const std::vector<double> &mat_b,
                                               size_t n);
 
