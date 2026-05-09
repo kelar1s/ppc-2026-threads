@@ -31,7 +31,7 @@ class TabalaevAMatrixMulStrassenALL : public BaseTask {
   void RunMaster(int size);
   void MasterBase(int size);
   void MasterAll(int size);
-  void RunWorker();
+  static void RunWorker();
 
   static std::vector<double> StrassenMultiply(const std::vector<double> &mat_a, const std::vector<double> &mat_b,
                                               size_t n);
