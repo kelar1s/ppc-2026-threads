@@ -174,7 +174,7 @@ void TabalaevAMatrixMulStrassenALL::MasterAll(int size) {
   std::vector<double> a12;
   std::vector<double> a21;
   std::vector<double> a22;
-  
+
   std::vector<double> b11;
   std::vector<double> b12;
   std::vector<double> b21;
