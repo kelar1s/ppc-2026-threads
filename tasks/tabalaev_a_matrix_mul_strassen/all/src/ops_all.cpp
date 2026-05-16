@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "tabalaev_a_matrix_mul_strassen/common/include/common.hpp"
+#include "util/include/util.hpp"
 
 namespace tabalaev_a_matrix_mul_strassen {
 
